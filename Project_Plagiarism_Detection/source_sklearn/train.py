@@ -7,7 +7,7 @@ import pandas as pd
 from sklearn.externals import joblib
 
 ## TODO: Import any additional libraries you need to define a model
-
+from sklearn.linear_model import LinearRegression
 
 # Provided model load function
 def model_fn(model_dir):
@@ -36,7 +36,7 @@ if __name__ == '__main__':
     # Do not need to change
     parser.add_argument('--output-data-dir', type=str, default=os.environ['SM_OUTPUT_DATA_DIR'])
     parser.add_argument('--model-dir', type=str, default=os.environ['SM_MODEL_DIR'])
-    parser.add_argument('--data-dir', type=str, default=os.environ['SM_CHANNEL_TRAIN'])
+    parser.add_argument('--data-dir', type=str, default=os.environ['SM_CHANNEL_TRAINING'])
     
     ## TODO: Add any additional arguments that you will need to pass into your model
     
@@ -53,14 +53,12 @@ if __name__ == '__main__':
     
     
     ## --- Your code here --- ##
-    
 
-    ## TODO: Define a model 
-    model = None
-    
-    
+    ## TODO: Define a model
+    model = LinearRegression()
+        
     ## TODO: Train the model
-    
+    model.fit(train_x, train_y)
     
     
     ## --- End of your code  --- ##

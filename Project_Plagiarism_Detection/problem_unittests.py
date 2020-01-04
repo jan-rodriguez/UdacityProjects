@@ -70,6 +70,8 @@ def test_containment(complete_df, containment_fn):
         results_3gram.append(val_3)
         
     # check correct results
+    print(results_1gram)
+    print(ngram_1)
     assert all(np.isclose(results_1gram, ngram_1, rtol=1e-04)), \
     'n=1 calculations are incorrect. Double check the intersection calculation.'
     # check correct results
